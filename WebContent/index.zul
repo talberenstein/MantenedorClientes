@@ -1,0 +1,34 @@
+<window id="win" title="Mantenedor de Clientes" width="500px" border="normal"
+     apply="org.zkoss.bind.BindComposer"
+    viewModel="@id('vm') @init('todo.users.UsersViewModel')">
+    <listbox id="box" multiple="true" rows="5" model="@bind(vm.persons)"
+    	selectedItem="@bind(vm.selectedPerson)">
+        <listhead>
+			<listheader label="Rut" width="80px" />
+            <listheader label="Nombre" width="80px" />
+            <listheader label="Edad" width="80px" />
+            <listheader label="Ocupacion" width="80px" />
+            <listheader label="Teléfono" width="80px" />
+        </listhead>  
+        <template name="model" var="person">    
+        <listitem value="@load(person)">            
+            <listcell label="@load(person.idPersona)"/>
+            <listcell label="@load(person.nombrePersona)"/>
+            <listcell label="@load(person.edadPersona)"/>
+            <listcell label="@load(person.profesionPersona)"/>
+            <listcell label="@load(person.telefonoPersona)"/>
+        </listitem>
+        </template> 
+    </listbox>
+        <groupbox id="mygrp"
+        		form="@id('person') @load(vm.selectedPerson)">
+        <caption label="Consulta" />
+        Rut: <textbox id="txtrut" cols="25" value="@bind(person.idPersona)"/>
+		Nombre: <textbox id="txtName" cols="25" value="@bind(person.nombrePersona)"/>  
+    	Edad: <textbox id="txtAge" cols="25" value="@bind(person.edadPersona)"/>
+    	Ocupacion: <textbox id="txtOcup" cols="25" value="@bind(person.profesionPersona)"/>
+		Fono: <textbox id="txtphone" cols="25" value="@bind(person.telefonoPersona)"/>    
+    <button id="add" label="Add" onClick="@command('add')"/>
+        </groupbox>  
+    
+</window>
