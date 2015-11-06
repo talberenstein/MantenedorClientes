@@ -2,6 +2,9 @@ package todo.users;
 
 import java.util.List;
 import java.util.UUID;
+
+import javax.swing.JOptionPane;
+
 import prueba.dao.PersonaDAO;
 import prueba.vo.PersonaVO;
 
@@ -35,9 +38,12 @@ public class UsersViewModel {
 	}
 	
 	@Command("add")
-	@NotifyChange("persons")
+	@NotifyChange("person")
 	public void add(){
-		this.newPerson.setIdPersona(UUID.randomUUID().toString());
+		String a="hola";
+		System.out.println("Hola");
+		  JOptionPane.showMessageDialog(null, "ingresando "+UUID.randomUUID().toString());
+		this.newPerson.setIdPersona(a);
 		personaDao.registrarPersona(this.newPerson);
 		this.newPerson = new PersonaVO();
 	}

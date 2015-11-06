@@ -21,13 +21,9 @@
         </template> 
     </listbox>
         <groupbox id="mygrp"
-        		form="@id('person') @load(vm.selectedPerson)">
+        		form="@id('person') @load(vm.selectedPerson) @save(vm.selectedPerson, before='update') @save(vm.newPerson,before='add')">
         <caption label="Consulta" />
-        Rut: <textbox id="txtrut" cols="25" value="@bind(person.idPersona)"/>
-		Nombre: <textbox id="txtName" cols="25" value="@bind(person.nombrePersona)"/>  
-    	Edad: <textbox id="txtAge" cols="25" value="@bind(person.edadPersona)"/>
-    	Ocupacion: <textbox id="txtOcup" cols="25" value="@bind(person.profesionPersona)"/>
-		Fono: <textbox id="txtphone" cols="25" value="@bind(person.telefonoPersona)"/>    
+        Rut: <textbox id="txtrut" cols="25" value="@bind(person.idPersona)"/>  
     <button id="add" label="Add" onClick="@command('add')"/>
         </groupbox>  
     
